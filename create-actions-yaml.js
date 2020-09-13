@@ -7,5 +7,6 @@ const srcData = parse(readFileSync(resolve(__dirname, 'node_modules/create-relea
 
 template.inputs = srcData.inputs;
 template.outputs = srcData.outputs;
+template.branding = srcData.branding;
 
 writeFileSync(resolve(__dirname, 'action.yaml'), stringify(template, { indent: 2 }));
