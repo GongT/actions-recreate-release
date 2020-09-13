@@ -6,18 +6,18 @@
 		}
 	],
 	"alias": {
-		"build-ts": "tsc -p src",
+		"build-ts": "tsc -p src --module ESNext",
+		"create-dist": "rollup -c ./lib/rollup.config.js",
 		"watch-ts": "tsc -w -p src",
-		"cleanup-lib": "rimraf lib",
+		"cleanup-lib": "rimraf lib dist",
 		"yarn-publish": "yarn publish --ignore-scripts --registry https://registry.npmjs.org --access=public",
 		"upgrade-node-modules": "npm-check-updates --update --packageFile ./package.json",
-		"run-test": "",
 		"git-clean": "git clean -f -d -X -e !node_modules -e !node_modules/** -e !.idea -e !.idea/** -e !.vscode -e !.vscode/**"
 	},
 	"command": {
 		"build": {
 			"title": "Build project",
-			"run": ["build-ts"]
+			"run": ["build-ts", "create-dist"]
 		},
 		"distclean": {
 			"title": "Delete git ignore files (without node_modules)",
@@ -36,11 +36,6 @@
 			"title": "Publish package (do same thing with npm publish)",
 			"run": ["yarn-publish"],
 			"after": ["rebuild"]
-		},
-		"test": {
-			"title": "Run test",
-			"run": ["run-test"],
-			"after": ["build"]
 		},
 		"upgrade": {
 			"title": "Do project dependency upgrade",

@@ -3,6 +3,8 @@
 	"compilerOptions": {
 		"outDir": "../lib",
 		"rootDir": ".",
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
 		"typeRoots": ["../node_modules/@types", "../node_modules", "../node_modules/@octokit"]
 	}
 }

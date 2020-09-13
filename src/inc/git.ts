@@ -1,4 +1,4 @@
-import * as execa from 'execa';
+import execa from 'execa';
 import { logDebug, logError } from './fn';
 
 export async function deleteTag(name: string) {

@@ -49,7 +49,7 @@ collapse('Delete Release', main)
 		return import('create-release/src/create-release.js');
 	})
 	.then((run) => {
-		return run();
+		return run.default();
 	})
 	.catch((e) => {
 		die('failed run create-release\n', e.stack || e.message);

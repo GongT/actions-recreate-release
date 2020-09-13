@@ -18,9 +18,7 @@
 	"dependencies": {
 		"@actions/core": "^1.2.5",
 		"@octokit/rest": "^18.0.5",
-		"@octokit/types": "^5.4.1",
-		"@types/fancy-log": "^1.3.1",
-		"@types/fs-extra": "^9.0.1",
+		"@rollup/plugin-json": "^4.1.0",
 		"create-release": "github:actions/create-release",
 		"execa": "^4.0.3",
 		"fancy-log": "^1.3.3",
@@ -31,6 +29,11 @@
 	"devDependencies": {
 		"@build-script/builder": "^2.0.16",
 		"@build-script/single-dog-asset": "^1.0.3",
+		"@octokit/types": "^5.4.1",
+		"@rollup/plugin-commonjs": "^15.0.0",
+		"@rollup/plugin-node-resolve": "^9.0.0",
+		"@types/fancy-log": "^1.3.1",
+		"@types/fs-extra": "^9.0.1",
 		"gulp": "^4.0.2",
 		"prettier": "^2.1.1",
 		"rollup": "^2.26.11",

@@ -2,7 +2,6 @@
 node_modules/
 jspm_packages/
 *.log
-dist/
 *.tgz
 lib
 
