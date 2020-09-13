@@ -1,0 +1,9 @@
+{
+	"name": "Recreate release",
+	"author": "GongT",
+	"description": "delete a release if it exists, and then create it by `actions/create-release`",
+	"runs": {
+		"using": "node12",
+		"main": "bin.js"
+	}
+}

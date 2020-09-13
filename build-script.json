@@ -1,22 +1,18 @@
 {
-	"load": [
-		{
-			"file": "@build-script/export-all-in-one/build-script-register",
-			"args": ["src/tsconfig.json"]
-		}
-	],
+	"$schema": "./node_modules/@build-script/builder/schema.json",
 	"alias": {
 		"build-ts": "tsc -p src --module ESNext",
 		"create-dist": "rollup -c ./lib/rollup.config.js",
+		"create-yaml": "node ./create-actions-yaml.js",
+		"add": "git add .",
 		"watch-ts": "tsc -w -p src",
 		"cleanup-lib": "rimraf lib dist",
-		"yarn-publish": "yarn publish --ignore-scripts --registry https://registry.npmjs.org --access=public",
-		"upgrade-node-modules": "npm-check-updates --update --packageFile ./package.json",
 		"git-clean": "git clean -f -d -X -e !node_modules -e !node_modules/** -e !.idea -e !.idea/** -e !.vscode -e !.vscode/**"
 	},
 	"command": {
 		"build": {
 			"title": "Build project",
+			"serial": true,
 			"run": ["build-ts", "create-dist"]
 		},
 		"distclean": {
@@ -29,17 +25,13 @@
 		},
 		"rebuild": {
 			"title": "Prepare for publish package",
-			"run": ["@build"],
+			"run": ["@build", "create-yaml"],
 			"after": ["distclean"]
 		},
-		"publish": {
-			"title": "Publish package (do same thing with npm publish)",
-			"run": ["yarn-publish"],
+		"commit-hook": {
+			"title": "add all files to index",
+			"run": ["add"],
 			"after": ["rebuild"]
-		},
-		"upgrade": {
-			"title": "Do project dependency upgrade",
-			"run": ["upgrade-node-modules"]
 		},
 		"watch": {
 			"title": "Watch mode build project",

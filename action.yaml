@@ -1,41 +1,41 @@
-name: Create release
+name: Recreate release
 author: GongT
-description: if it did not exists
+description: delete a release if it exists, and then create it by `actions/create-release`
+runs:
+  using: node12
+  main: bin.js
 inputs:
   tag_name:
-    description: 'The name of the tag. This should come from the webhook payload, `github.GITHUB_REF` when a user pushes a new tag'
+    description: The name of the tag. This should come from the webhook payload,
+      `github.GITHUB_REF` when a user pushes a new tag
     required: true
   release_name:
-    description: 'The name of the release. For example, `Release v1.0.1`'
+    description: The name of the release. For example, `Release v1.0.1`
     required: true
   body:
-    description: 'Text describing the contents of the tag.'
+    description: Text describing the contents of the tag.
     required: false
   body_path:
-    description: 'Path to file with information about the tag.'
+    description: Path to file with information about the tag.
     required: false
   draft:
-    description: '`true` to create a draft (unpublished) release, `false` to create a published one. Default: `false`'
+    description: "`true` to create a draft (unpublished) release, `false` to create
+      a published one. Default: `false`"
     required: false
     default: false
   prerelease:
-    description: '`true` to identify the release as a prerelease. `false` to identify the release as a full release. Default: `false`'
+    description: "`true` to identify the release as a prerelease. `false` to
+      identify the release as a full release. Default: `false`"
     required: false
     default: false
   commitish:
-    description: 'Any branch or commit SHA the Git tag is created from, unused if the Git tag already exists. Default: SHA of current commit'
+    description: "Any branch or commit SHA the Git tag is created from, unused if
+      the Git tag already exists. Default: SHA of current commit"
     required: false
-  github_token:
-    description: 'github.token'
-    required: false
-    default: ${{ github.token }}
 outputs:
   id:
-    description: 'The ID of the created Release'
+    description: The ID of the created Release
   html_url:
-    description: 'The URL users can navigate to in order to view the release'
+    description: The URL users can navigate to in order to view the release
   upload_url:
-    description: 'The URL for uploading assets to the release'
-runs:
-  using: 'node12'
-  main: 'bin.js'
+    description: The URL for uploading assets to the release
