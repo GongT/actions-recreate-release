@@ -1,1 +1,25 @@
-./node_modules/@build-script/single-dog-asset/package/prettierrc.js
+module.exports = {
+	printWidth: 120,
+	useTabs: true,
+	tabWidth: 4,
+	semi: true,
+	singleQuote: true,
+	quoteProps: 'as-needed',
+	jsxSingleQuote: false,
+	trailingComma: 'es5',
+	bracketSpacing: true,
+	jsxBracketSameLine: false,
+	arrowParens: 'always',
+	requirePragma: false,
+	insertPragma: false,
+	endOfLine: 'lf',
+	overrides: [
+		{
+			files: '*.yaml',
+			options: {
+				useTabs: false,
+				tabWidth: 2,
+			},
+		},
+	],
+};
