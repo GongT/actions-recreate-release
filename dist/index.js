@@ -1,12 +1,12 @@
 'use strict';
 
 var vendor = require('./vendor.js');
+require('path');
 require('fs');
 require('constants');
 require('stream');
 var util = require('util');
 require('assert');
-require('path');
 require('console');
 require('os');
 require('child_process');
@@ -171,6 +171,9 @@ async function main() {
     }
     else if (await vendor.lib.pathExists('.git')) ;
     else {
+        logDebug('cwd=%s', process.cwd());
+        logDebug('GITHUB_WORKSPACE=%s', GITHUB_WORKSPACE);
+        vendor.execa_1.sync('ls', ['-lAh'], { stdio: 'inherit' });
         die('.git did not exists in current and GITHUB_WORKSPACE directory');
     }
     logDebug('Working Directory: %s', process.cwd());

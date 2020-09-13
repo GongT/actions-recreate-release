@@ -1,9 +1,8 @@
 #!/usr/bin/env node
 
-require('source-map-support/register');
 
 if (process.env.CI) {
-	require('./dist.js');
+	require('./dist/index.js');
 } else {
 	require('./lib/index.js');
 }

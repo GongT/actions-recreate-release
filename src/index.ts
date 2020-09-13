@@ -1,7 +1,9 @@
+import 'source-map-support/register';
 import { pathExists } from 'fs-extra';
 import { collapse, die, getEnvironment, logDebug, requireEnvironment, requireInput } from './inc/fn';
 import { deleteTag, testTagExists } from './inc/git';
 import { deleteRelease, getReleaseByLabel, getReleaseByReleaseName, setCurrentRepo } from './inc/request';
+import execa from 'execa';
 
 async function main() {
 	const TAG_NAME = requireInput('tag_name');
@@ -14,6 +16,9 @@ async function main() {
 	} else if (await pathExists('.git')) {
 		// pass
 	} else {
+		logDebug('cwd=%s', process.cwd());
+		logDebug('GITHUB_WORKSPACE=%s', GITHUB_WORKSPACE);
+		execa.sync('ls', ['-lAh'], { stdio: 'inherit' });
 		die('.git did not exists in current and GITHUB_WORKSPACE directory');
 	}
 	logDebug('Working Directory: %s', process.cwd());
