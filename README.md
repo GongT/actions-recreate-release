@@ -28,3 +28,7 @@ jobs:
           draft: false
           prerelease: false
 ```
+
+## My usage:
+* [GongT/wireguard-config-distribute](https://github.com/GongT/wireguard-config-distribute)
+
