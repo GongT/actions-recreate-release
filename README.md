@@ -1,6 +1,6 @@
 # recreate-release
 
-delete release and recreate it. then call `actions/create-release` to create it again.
+Delete previous release by `tag_name` or `release_name`. Then call `actions/create-release` to create it again.
 
 # Params:
 [actions/create-release](https://github.com/actions/create-release)
@@ -19,8 +19,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
+          tag_name: latest
+          release_name: Release at ${{ github.ref }}
           body: |
             Changes in this Release
             - First Change
